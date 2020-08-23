@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ {
+	int T;
+	cin>>T;
+	
+	while(T--)
+	{
+	    
+	   int N;
+	   cin>>N;
+	  
+	  int arr1[N];
+	 
+	 for(int i=0;i<N;i++)
+	    cin>>arr1[i];
+	    
+	  int M;
+	  cin>>M;
+	    
+	    
+	 int arr2[M];
+	 
+	 for(int i=0;i<M;i++)
+	    cin>>arr2[i];
+	  
+	int num1 = 0;
+	for(int i=0;i<N;i++)
+	  num1=num1 * 10 + arr1[i];
+	  
+	 
+	    int num2 = 0;
+	for(int i=0;i<M;i++)
+	  num2=num2 * 10 + arr2[i];
+	    
+	  
+	  cout<<num1+num2;
+	  
+	  cout<<endl;
+	    
+	    
+	}
+	return 0;
+}
