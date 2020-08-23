@@ -1,0 +1,39 @@
+ 
+ /*
+ Input: 5
+Output:
+[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
+
+*/
+
+vector<vector<int>> generate(int numRows) {
+        
+        vector<vector<int>> result(numRows);
+        
+        for(int i=0;i<numRows;i++)
+        {
+            // fill 1st and second rows
+            
+            result[i].resize(i+1);
+            result[i][0] = result[i][i] = 1;
+            
+            
+            // fill from 3rd
+            
+            for(int j=1;j<i;j++)
+            {
+                
+                result[i][j] = result[i-1][j-1]+result[i-1][j];
+            
+            }
+            
+        }
+        
+        return result;
+    }
