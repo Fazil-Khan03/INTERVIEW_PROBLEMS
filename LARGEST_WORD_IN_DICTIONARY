@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ {
+	int T;
+	cin>>T;
+	
+	while(T--)
+	{
+		
+	 int x;
+	 cin>>x;
+	 
+	 vector<string> dict;
+	 
+	 for(int i=0;i<x;i++)
+	  {
+	      string c;
+	      cin>>c;
+	      dict.push_back(c);
+	     
+	  }
+	 
+	 string str;
+	 cin>>str;
+
+	set<char> str_set;
+	
+	for(char i:str)
+	   str_set.insert(i);
+	
+string res = "";
+ int maxlen = 0;
+
+    for(int i=0;i<dict.size();i++)
+    {
+        
+        string temp = dict[i];
+     
+      int j;
+      
+      for(j=0;j<temp.length();j++)
+      {
+      	
+          if(str_set.find(temp[j])==str_set.end())
+          {
+           
+            break;
+              
+          }
+          
+      }
+      
+      if(j==temp.length())    
+       { 
+              
+			if(temp.length()>maxlen)
+			{
+				maxlen = temp.length();
+				res = temp;
+				
+			}
+         
+       }   
+        
+    }
+	 
+	  cout<<res<<endl;  
+	}
+	return 0;
+}
