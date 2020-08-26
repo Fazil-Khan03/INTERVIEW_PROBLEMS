@@ -1,0 +1,45 @@
+void topView(struct Node *root)
+{ 
+    queue<pair<int,Node*>> q;
+    
+    
+    int level = 0;
+    
+    q.push({0,root});
+    
+     map<int,Node*> um;
+    
+    while(!q.empty())
+    {
+        Node *temp = q.front().second;
+        int level = q.front().first;
+        q.pop();
+        
+        if(um.find(level)==um.end())
+        {
+          um[level]=temp;
+         
+        }
+        
+        if(temp->left)
+        q.push({level-1,temp->left});
+      
+        if(temp->right)
+         q.push({level+1,temp->right});
+        
+       
+        
+    }
+   
+    map<int,Node*> :: iterator itr;
+    
+    for(itr=um.begin();itr!=um.end();itr++)
+    {
+        
+        cout<<itr->second->data<<" ";
+        
+        
+    }
+   
+    
+}
