@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ {
+	int T;
+	cin>>T;
+	
+	while(T--)
+	{
+	    
+	   int N;
+	   cin>>N;
+	   
+	   int arr[N];
+	
+	   for(int i=0;i<N;i++)
+	      cin>>arr[i];
+	    
+	    // code here
+	    
+	   vector<int> localmin;
+	   vector<int> localmax;
+	 
+	   if(arr[0]<arr[1])
+	      localmin.push_back(0);
+	 
+	   for(int i=1;i<N-1;i++)
+	    {
+	     if(arr[i]<arr[i-1] && arr[i]<arr[i+1])
+	           localmin.push_back(i);
+	   
+	     if(arr[i]>arr[i-1] && arr[i]>arr[i+1])
+	           localmax.push_back(i);
+	      
+	        
+	    }
+	    
+	    if(arr[N-1]>arr[N-2])
+	      localmax.push_back(N-1);
+	   
+	   
+	   int profit = 0;
+	   
+	   for(int i=0;i<localmax.size() && i<localmin.size();i++)
+	    {
+	    	
+	       profit+=localmax[i] - localmin[i];	
+	    	
+		}
+	   
+	   if(profit>0)
+	   for(int i=0;i<localmax.size() && i<localmin.size();i++)
+	    {
+	    	cout<<"("<<localmin[i]<<" "<<localmax[i]<<") ";
+	    	
+	    	
+		}
+	  else
+	    cout<<"No Profit";
+	    
+	    
+	    
+	  cout<<endl;  
+	}
+	return 0;
+}
