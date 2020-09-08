@@ -1,0 +1,73 @@
+
+/*
+Given a string, find the length of the longest substring without repeating characters. For example, the longest substrings without repeating characters for “ABDEFGABEF” are “BDEFGA” and “DEFGAB”, with length 6.
+
+Input:
+
+The first line of input contains an integer T denoting the number of test cases.
+The first line of each test case is str.
+
+Output:
+
+Print the length of longest substring.
+
+Constraints:
+
+1 ≤ T ≤ 20
+1 ≤ str ≤ 50
+
+Example:
+
+Input:
+2
+geeksforgeeks
+qwertqwer
+
+Output:
+7
+5
+ 
+*/
+
+  #include<bits/stdc++.h>
+  using namespace std;
+ 
+  int main()
+  {
+    
+    int T;
+    cin>>T;
+    
+    while(T--)
+    {
+ 
+    string str;
+    cin>>str;
+    
+    int maxLength = 0;
+    int start, end;
+    start = end = 0;
+    
+    map<int,int> mp;
+        
+    while(end < str.length()) {
+      
+      
+      if(mp.find(str[end])!=mp.end())
+      {
+        start = max(start, mp[str[end]] + 1);
+      }
+      
+      mp[str[end]] = end;
+      maxLength = max(end - start + 1, maxLength);
+      
+      end++;
+    }
+  
+    cout<<maxLength<<endl;
+    
+    }
+    
+    return 0;
+  }
+  
