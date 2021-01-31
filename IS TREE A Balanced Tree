@@ -1,0 +1,78 @@
+
+/*
+Given a binary tree, determine if it is height-balanced.
+
+For this problem, a height-balanced binary tree is defined as:
+
+a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+
+ 
+
+Example 1:
+
+
+Input: root = [3,9,20,null,null,15,7]
+Output: true
+Example 2:
+
+
+Input: root = [1,2,2,3,3,null,null,4,4]
+Output: false
+Example 3:
+
+Input: root = []
+Output: true
+
+*/
+
+class Data
+{
+    
+    public:
+    bool  isBalan;
+    int Height;
+
+    
+};
+class Solution {
+public:
+    
+
+    Data *util(TreeNode* root)
+    {
+        
+        if(root==NULL)
+        {
+            
+            Data *t = new Data();
+             t->Height  = 1;
+            t->isBalan = true;
+            return t;
+            
+            
+        }
+        
+    
+        Data *lh = util(root->left);
+        Data *rh = util(root->right);
+        
+        Data *mnode = new Data();
+        
+        mnode->isBalan = (lh->isBalan && rh->isBalan && (abs(lh->Height - rh->Height )) <=1 );
+        mnode->Height = max(lh->Height,rh->Height)+1;
+        
+        return mnode;
+        
+        
+        
+    }
+    
+    bool isBalanced(TreeNode* root) {
+        
+          Data *res = util(root);
+          
+        return res->isBalan;
+        
+        
+    }
+};
